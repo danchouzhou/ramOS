@@ -22,7 +22,7 @@ rm -rf ${DIR} # remove previous files
 mkdir -p ${DIR}
 
 echo "Start debootstrap ..."
-debootstrap --arch ${ARC} --components=${COM} --include=${PKG} trixie ${DIR} ${URL}
+debootstrap --arch ${ARC} --components=${COM} --include=${PKG} ${DIS} ${DIR} ${URL}
 rm ${DIR}/var/cache/apt/archives/*.deb
 
 echo "Configure hostname ..."
