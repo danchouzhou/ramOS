@@ -1,6 +1,6 @@
 # ramOS: Boot Debian into RAM
-This project boots and runs Debian entirely inside RAM. All changes are temporary within memory, allowing user to made permanent changes through the `init.sh` and `start.sh` script. This made x86-64 computers act like embedded devices, enabling them to survive sudden power outages or being unplugged at any time without the risk of filesystem corruption. As the successor to ramfs, ramOS features the following major changes:
-- **Build the root filesystem with `debootstrap`**: This allow user to build the boot files with Raspberry Pi, WSL or any Linux environment, instead of physical x86-64 machine or VM
+This project boots and runs Debian entirely inside RAM. All changes are temporary within memory, allowing user to made permanent changes through the `init.sh` and `start.sh` script. This made x86-64 computers act like embedded devices, enabling them to survive sudden power outages or being unplugged at any time without the risk of filesystem corruption. As the successor to [ramfs](https://github.com/danchouzhou/ramfs), ramOS features the following major changes:
+- **Build the root filesystem with** `debootstrap`: This allow user to build the boot files with Raspberry Pi, WSL or any Linux environment, instead of physical x86-64 machine or VM
 - **Save RAM**: Reduce the file size to 33% of ramfs
 - **Gracefully, properly**: Override the mount point and execute `init.sh` via `local-bottom` script
 ## Clone the project
