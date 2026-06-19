@@ -1,0 +1,6 @@
+./EFI/BOOT/*
+./EFI/grub/*
+./EFI/initrd.img*
+./EFI/rootfs.tar.gz
+./EFI/vmlinuz*
+./rootfs/*
