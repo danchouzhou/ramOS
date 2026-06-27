@@ -4,13 +4,13 @@
 set -e
 
 ARC=amd64
-COM=main
+COM=main,non-free-firmware
 DIS=trixie
 DIR=./rootfs
 URL=http://deb.debian.org/debian
 
 # additional packages
-PKG=linux-image-${ARC},initramfs-tools,busybox,zstd,locales,dosfstools,tar # essential stuff
+PKG=linux-image-${ARC},initramfs-tools,busybox,zstd,firmware-linux,locales,dosfstools,tar # essential stuff
 PKG+=,sudo,nftables,openssh-server
 PKG+=,network-manager,dbus-broker
 PKG+=,htop,screen,nano,wget,bash-completion,eject,mdadm,lvm2,net-tools # basic utils
@@ -33,6 +33,19 @@ echo "Configure locale ..."
 sed -i '/en_US.UTF-8 UTF-8/s/^# //g' ${DIR}/etc/locale.gen
 chroot ${DIR} locale-gen
 chroot ${DIR} update-locale LANG=en_US.UTF-8
+
+if [ "$1" = "--desktop" ]; then
+echo "Installing Xfce Desktop environment ..."
+mount -t proc proc ${DIR}/proc
+mount --rbind /dev ${DIR}/dev
+chroot ${DIR} apt install xserver-xorg xserver-xorg-core xserver-xorg-video-all xfonts-base xinit x11-xserver-utils --no-install-recommends -y
+chroot ${DIR} apt install xfce4 tango-icon-theme xfce4-terminal thunar-volman gvfs mousepad blueman bluetooth network-manager-gnome --no-install-recommends -y
+chroot ${DIR} apt install pavucontrol -y
+chroot ${DIR} apt install chromium --no-install-recommends -y
+chroot ${DIR} apt clean
+umount -R ${DIR}/proc
+umount -R ${DIR}/dev
+fi
 
 echo "Configure fstab ..."
 echo "tmpfs / tmpfs defaults 0 0" > ${DIR}/etc/fstab

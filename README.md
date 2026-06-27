@@ -5,13 +5,18 @@ This project boots and runs Debian entirely inside RAM. All changes are temporar
 - **Gracefully, properly**: Override the mount point and execute `init.sh` via `local-bottom` script
 ## Clone the project
 ```
-git clone https://github.com/danchouzhou/ramOS.git
+git clone git@github.com:danchouzhou/ramOS.git
 ```
 ## Executing shell script
 ```
 cd ramOS
 chmod +x mkbootfiles.sh
+
+# Build CLI only
 sudo ./mkbootfiles.sh
+
+# To build the Xfce desktop environment
+sudo ./mkbootfiles.sh --desktop
 ```
 ## Make a boot disk
 ### For UEFI environment
@@ -26,4 +31,4 @@ sudo grub-install --target=i386-pc --boot-directory=/mnt/EFI /dev/sdb
 sudo umount /mnt
 ```
 ## Validation
-N/A (WIP)
+- A8-7600 / F2A88XM-HD3 / DDR3 16 GB / Secure Boot **PASS**
