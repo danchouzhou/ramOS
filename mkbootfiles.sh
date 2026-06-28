@@ -10,11 +10,11 @@ DIR=./rootfs
 URL=http://deb.debian.org/debian
 
 # additional packages
-PKG=linux-image-${ARC},initramfs-tools,busybox,zstd,firmware-linux,locales,dosfstools,tar # essential stuff
+PKG=linux-image-${ARC},initramfs-tools,busybox,zstd,locales,dosfstools,tar # essential stuff
 PKG+=,sudo,nftables,openssh-server
-PKG+=,network-manager,dbus-broker
-PKG+=,htop,screen,nano,wget,bash-completion,eject,mdadm,lvm2,net-tools # basic utils
-PKG+=,ntfs-3g,exfat-fuse # file system support
+PKG+=,network-manager,dbus-broker,wpasupplicant,rfkill,firmware-linux,firmware-realtek
+PKG+=,htop,screen,nano,wget,bash-completion,pciutils,usbutils,eject,net-tools # basic utils
+PKG+=,mdadm,lvm2,ntfs-3g,exfat-fuse # file system support
 
 HOSTNAME=debian
 
