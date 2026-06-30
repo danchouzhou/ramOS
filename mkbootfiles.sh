@@ -37,7 +37,7 @@ chroot ${DIR} update-locale LANG=en_US.UTF-8
 if [ "$1" = "--desktop" ]; then
 echo "Installing Xfce Desktop environment ..."
 mount -t proc proc ${DIR}/proc
-mount --rbind /dev ${DIR}/dev
+mount --rbind --make-rslave /dev ${DIR}/dev
 chroot ${DIR} apt install xserver-xorg xserver-xorg-core xserver-xorg-video-all xfonts-base xinit x11-xserver-utils --no-install-recommends -y
 chroot ${DIR} apt install xfce4 tango-icon-theme xfce4-terminal thunar-volman gvfs mousepad blueman bluetooth network-manager-gnome --no-install-recommends -y
 chroot ${DIR} apt install pavucontrol -y
