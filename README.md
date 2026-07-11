@@ -5,7 +5,7 @@ This project boots and runs Debian entirely inside RAM. All changes are temporar
 - **Gracefully, properly**: Override the mount point and execute `init.sh` via `local-bottom` script
 ## Clone the project
 ```
-git clone git@github.com:danchouzhou/ramOS.git
+git clone https://github.com/danchouzhou/ramOS.git
 ```
 ## Executing shell script
 ```
