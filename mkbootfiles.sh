@@ -126,7 +126,8 @@ cp ${DIR}/boot/${INIT} ./EFI/${INIT}
 echo "Create GRUB boot menu ..."
 rm -rf ./EFI/BOOT ./EFI/grub # remove previous files
 grub-install --target=x86_64-efi --removable --efi-directory=./ --boot-directory=./EFI --force
-cat << EOF > ./EFI/BOOT/grub.cfg
+echo "configfile (\$root)/EFI/grub/grub.cfg" > ./EFI/BOOT/grub.cfg
+cat << EOF > ./EFI/grub/grub.cfg
 serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1
 terminal_input console serial
 terminal_output console serial
